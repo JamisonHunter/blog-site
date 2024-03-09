@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Define state to store the fetched data
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    // Fetch data when the component mounts
+    fetchPosts();
+  }, []);
+
+  const fetchPosts = async () => {
+    try {
+      // Fetch data from the API
+      const response = await fetch("http://127.0.0.1:8080/api");
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+      // Parse the response as JSON
+      const jsonData = await response.json();
+      // Update the state with the fetched data
+      setData(jsonData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      {/* Render the data if it's available */}
+      {data && (
+        <div>
+          <h1>{data.title}</h1>
+          <p>{data.text}</p>
+          <p>Date: {data.date}</p>
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
