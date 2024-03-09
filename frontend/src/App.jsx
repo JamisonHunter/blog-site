@@ -34,6 +34,7 @@ function App() {
           <h1>{data.title}</h1>
           <p>{data.text}</p>
           <p>Date: {data.date}</p>
+          <p>{JSON.stringify(data)}</p>
         </div>
       )}
     </div>
