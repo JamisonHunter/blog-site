@@ -1,21 +1,23 @@
 # Imports
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 from pymongo import MongoClient
-from bson import ObjectId
+# from bson import ObjectId
+import creds
 
 
 app = Flask(__name__)
 CORS(app)
 
 # Establishing MongoDB connection
-client = MongoClient(MONGO_URI)
+client = MongoClient(creds.MONGO_URI)
 db = client["blog"]
 collection = db["posts"]
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    message = collection.find_one()
+    return render_template("index.html", message=message)
 
 
 if __name__ == "__main__":
