@@ -27,17 +27,19 @@ function App() {
   };
 
   return (
-    <div>
-      {/* Render the data if it's available */}
-      {data && (
-        <div>
-          <h1>{data.title}</h1>
-          <p>{data.text}</p>
-          <p>Date: {data.date}</p>
-          <p>{JSON.stringify(data)}</p>
-        </div>
-      )}
-    </div>
+    <>
+      <div className='main-intro-container'>
+        {/* Render the data if it's available */}
+        {data && (
+          <div>
+            <img src={ data.headerimage } alt="Header Image" className="main-intro-image"></img>
+            <h2 className="main-intro-title">{data.title}</h2>
+            <p className="main-intro-date">{data.date}</p>
+            <p className="main-intro-text">{data.text}</p>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 
