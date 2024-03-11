@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import './App.css';
 
 function App() {
   // Define state to store the fetched data
-  const [data, setData] = useState(null);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     // Fetch data when the component mounts
@@ -20,26 +20,24 @@ function App() {
       // Parse the response as JSON
       const jsonData = await response.json();
       // Update the state with the fetched data
-      setData(jsonData);
+      setPosts(jsonData);
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <>
-      <div className='main-intro-container'>
-        {/* Render the data if it's available */}
-        {data && (
-          <div>
-            <img src={ data.headerimage } alt="Header Image" className="main-intro-image"></img>
-            <h2 className="main-intro-title">{data.title}</h2>
-            <p className="main-intro-date">{data.date}</p>
-            <p className="main-intro-text">{data.text}</p>
-          </div>
-        )}
-      </div>
-    </>
+    <div className="container">
+      {/* Mapping over the array of posts and render each one in a separate div */}
+      {posts.map(post => (
+        <div key={post._id} className="post">
+          <img src={post.headerimage} alt="Header Image" className="post-image" />
+          <h2 className="post-title">{post.title}</h2>
+          <p className="post-date">{post.date}</p>
+          <p className="post-text">{post.text}</p>
+        </div>
+      ))}
+    </div>
   );
 }
 
