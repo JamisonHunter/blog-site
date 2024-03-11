@@ -1,13 +1,10 @@
-/* src/components/Header.css */
-
-.header {
+.footer {
     background-color: #333;
     color: #fff;
     padding: 20px;
   }
   
-  .header-title {
+  .footer-title {
     margin: 0;
     font-size: 24px;
   }
-  

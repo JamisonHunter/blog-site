@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   // Define state to store the fetched data
@@ -27,17 +29,21 @@ function App() {
   };
 
   return (
-    <div className="container">
-      {/* Mapping over the array of posts and render each one in a separate div */}
-      {posts.map(post => (
-        <div key={post._id} className="post">
-          <img src={post.headerimage} alt="Header Image" className="post-image" />
-          <h2 className="post-title">{post.title}</h2>
-          <p className="post-date">{post.date}</p>
-          <p className="post-text">{post.text}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      <Header></Header>
+      <div className="intro-container">
+        {/* Mapping over the array of posts and render each one in a separate div */}
+        {posts.map(post => (
+          <div key={post._id} className="post">
+            <img src={post.headerimage} alt="Header Image" className="post-image" />
+            <h2 className="post-title">{post.title}</h2>
+            <p className="post-date">{post.date}</p>
+            <p className="post-text">{post.text}</p>
+          </div>
+        ))}
+      </div>
+      <Footer></Footer>
+    </>
   );
 }
 
