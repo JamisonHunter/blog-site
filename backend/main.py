@@ -35,7 +35,14 @@ def api():
     # Jsonify seems optional here but I suspect it is a good practice. 
     return jsonify(message_first, message_second, message_third)
 
-
+@app.route("/allposts", methods=['GET'])
+def allposts():
+    all_posts = []
+    cursor = collection.find({}, sort=[('date', -1)])
+    for document in cursor:
+        document['_id'] = str(document['_id'])
+        all_posts.append(document)
+    return jsonify(all_posts)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080, debug=True)
