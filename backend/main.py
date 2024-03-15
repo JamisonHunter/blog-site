@@ -2,7 +2,6 @@
 from flask import Flask, render_template, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
-# from bson import ObjectId
 import creds
 
 

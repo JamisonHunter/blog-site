@@ -1,0 +1,39 @@
+/* Banner.css */
+
+.banner {
+    position: relative;
+    text-align: center;
+  }
+  
+  .banner-image {
+    width: 100%;
+  }
+  
+  .banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+  }
+  
+  .banner-text h2 {
+    font-size: 48px;
+    margin-bottom: 0;
+    animation: fadeIn 2s ease-in-out; /* Apply fade in animation */
+  }
+  
+  .banner-text p {
+    font-size: 16px;
+    animation: fadeIn 2s ease-in-out; /* Apply fade in animation */
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  

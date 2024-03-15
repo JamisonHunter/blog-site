@@ -7,11 +7,13 @@ import Home from './components/Home';
 import About from './components/About';
 import Post from './components/Post'; 
 import Articles from './components/Articles';
+import Banner from './components/Banner'; 
 
 function App() {
   return (
     <Router>
       <Header />
+      <Banner/>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
