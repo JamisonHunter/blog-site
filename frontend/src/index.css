@@ -66,3 +66,30 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+body{
+  display: grid;
+  background-color: #182849;
+}
+
+.post {
+  background-color: #303030;
+  width: 800px;
+  height: auto;
+  border: solid lightblue 2px;
+  margin: auto;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.about-container {
+  width: 800px;
+  height: auto;
+  margin: auto;
+}
+
+.intro-container {
+  width: 800px;
+  margin: auto;
+}
