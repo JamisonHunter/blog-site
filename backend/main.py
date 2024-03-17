@@ -4,16 +4,15 @@ from flask_cors import CORS
 from pymongo import MongoClient
 import creds
 
-
 app = Flask(__name__)
 CORS(app)
 
 # Establishing MongoDB connection
-client = MongoClient(creds.MONGO_URI)
+client = MongoClient(creds.MONGO_URI + "&tlsAllowInvalidCertificates=true")
 db = client["blog"]
 collection = db["posts"]
 
-# Establing a home route. 
+# Establing a home route.
 @app.route("/", methods=["GET"])
 def portal():
     # Get a single document from the collection.
@@ -31,7 +30,7 @@ def api():
     message_first['_id'] = str(message_first['_id'])
     message_second['_id'] = str(message_second['_id'])
     message_third['_id'] = str(message_third['_id'])
-    # Jsonify seems optional here but I suspect it is a good practice. 
+    # Jsonify seems optional here but I suspect it is a good practice.
     return jsonify(message_first, message_second, message_third)
 
 @app.route("/allposts", methods=['GET'])
